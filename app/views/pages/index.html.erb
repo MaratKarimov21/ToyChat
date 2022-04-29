@@ -1,11 +1,45 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
 
+<div class="container">
+  <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+    </ul>
+  </header>
+</div>
+<div class='container card' style=''>
+  <h1>Welcome to JoeToy</h1>
+  <p>Your Chats:</p>
 
+  <div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">List group item heading</h5>
+      <small>3 days ago</small>
+      <span class="badge bg-primary rounded-pill" style='align: center'>1</span>
+    </div>
+    <p class="mb-1">Some placeholder content in a paragraph.</p>
+    <small>And some small print.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">List group item heading</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">Some placeholder content in a paragraph.</p>
+    <small class="text-muted">And some muted small print.</small>
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">List group item heading</h5>
+      <small class="text-muted">3 days ago</small>
+    </div>
+    <p class="mb-1">Some placeholder content in a paragraph.</p>
+    <small class="text-muted">And some muted small print.</small>
+  </a>
+</div>
+</div>
 <!-- app/views/pages/index.html.erb -->
-<a href="#"
-   data-reflex="click->Counter#increment"
-   data-step="1"
-   data-count="<%= @count.to_i %>">
-  Increment <%= @count.to_i %>
-</a>
