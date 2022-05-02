@@ -6,6 +6,7 @@ class PagesController < ApplicationController
   end
 
   def clicker
+    @count = session[:count].to_i
     @current_page = 'Clicker'
   end
 end

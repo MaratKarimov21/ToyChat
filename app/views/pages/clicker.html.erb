@@ -5,9 +5,8 @@
   <div class='clicker'>
     <button
       class="style-5"
-      data-reflex="click->Counter#increment"
-      data-step="1"
-      data-count="<%= @count.to_i %>"
+      data-controller="counter"
+      data-action="click->counter#increment"
     ><%= @count %> ⚡</button>
   </div>
 </body>
