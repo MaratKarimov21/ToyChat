@@ -5,4 +5,8 @@ export default class extends ApplicationController {
     event.preventDefault()
     this.stimulate('Counter#increment', 1)
   }
+
+  disconnect() {
+    this.stimulate('Counter#save') // Error disconnecting controller
+  }
 }
