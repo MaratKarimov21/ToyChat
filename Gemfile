@@ -74,3 +74,6 @@ group :test do
 end
 
 gem "stimulus_reflex", "= 3.5.0.pre8"
+
+gem 'pry', '~> 0.13.1'
+

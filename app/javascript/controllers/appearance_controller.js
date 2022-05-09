@@ -1,5 +1,7 @@
 import ApplicationController from './application_controller.js'
 import { createConsumer } from "@rails/actioncable"
+import CableReady from 'cable_ready'
+
 
 export default class extends ApplicationController {
   connect() {
@@ -17,12 +19,13 @@ export default class extends ApplicationController {
     );
   }
 
-  _connected() {}
+  _connected() {
+    console.log('Appearance controller conected')
+  }
 
   _disconnected() {}
 
   _received(data) {
-    const element = this.statusTarget
-    element.innerHTML = data
+    if (data.cableReady) CableReady.perform(data.operations)
   }
 }

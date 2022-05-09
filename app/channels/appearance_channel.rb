@@ -1,5 +1,6 @@
 class AppearanceChannel < ApplicationCable::Channel
   def subscribed
-    puts 'subscribed'
+    stream_from 'appearance'
+    current_user.appear(connection.server.connections.count)
   end
 end

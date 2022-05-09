@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include CableReady::Broadcaster
+
   devise :database_authenticatable, :registerable, :authentication_keys => [:username]
 
   has_and_belongs_to_many :friends,
@@ -22,6 +24,14 @@ class User < ApplicationRecord
 
   def send_invitation_to(user)
     Invitation.create!(sender: self, receiver: user)
+  end
+
+  def appear(count)
+    cable_ready["appearance"].inner_html(
+      selector: '#appearance',
+      html: 'Appearanse: ' + count.to_s
+    )
+    cable_ready.broadcast
   end
 
   private
