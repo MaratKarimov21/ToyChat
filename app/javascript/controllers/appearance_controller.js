@@ -28,4 +28,8 @@ export default class extends ApplicationController {
   _received(data) {
     if (data.cableReady) CableReady.perform(data.operations)
   }
+
+  disconnect() {
+    this.subscription.remove()
+  }
 }

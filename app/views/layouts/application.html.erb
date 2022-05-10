@@ -14,7 +14,11 @@
   </head>
 
   <body>
-    <%= render 'layouts/top_menu' %>
+    <% if user_signed_in? %>
+      <%= render 'layouts/top_menu' %>
+      <%= render 'layouts/appearance' %>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
