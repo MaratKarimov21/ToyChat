@@ -11,6 +11,9 @@ class User < ApplicationRecord
   has_many :received_invitations, class_name: 'Invitation', foreign_key: 'receiver_id', inverse_of: :receiver
   has_many :sended_invitations, class_name: 'Invitation', foreign_key: 'sender_id', inverse_of: :sender
 
+  has_many :created_chats, class_name: 'Chat', foreign_key: 'creator_id', inverse_of: :creator
+  has_many :involved_chats, class_name: 'Chat', foreign_key: 'user_id', inverse_of: :user
+
   validates :username, uniqueness: true
 
   def self.from_omniauth(auth)
@@ -22,6 +25,14 @@ class User < ApplicationRecord
 
   def send_invitation_to(user)
     Invitation.create!(sender: self, receiver: user)
+  end
+
+  def chats
+    created_chats + involved_chats
+  end
+
+  def chat_with(friend)
+    created_chats.where(user: friend).first || involved_chats.where(creator: friend).first
   end
 
   private

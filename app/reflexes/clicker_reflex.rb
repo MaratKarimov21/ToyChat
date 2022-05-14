@@ -1,4 +1,4 @@
-class CounterReflex < ApplicationReflex
+class ClickerReflex < ApplicationReflex
   def increment(step = 1)
     session[:count] = session[:count].to_i + step
   end

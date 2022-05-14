@@ -1,0 +1,10 @@
+<% is_opponent = message.user != current_user %>
+<li class="clearfix">
+    <div class="message-data <%= is_opponent ? 'text-right' : '' %>">
+        <span class="message-data-time"><%= message.created_at.strftime('%m/%d/%y %I:%M%p') %></span>
+        <% if is_opponent %>
+          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="avatar">
+        <% end %>
+    </div>
+    <div class="message <%= is_opponent ? 'other-message float-right' : 'my-message' %>"><%= message.content %></div>
+</li>

@@ -5,8 +5,8 @@ import CableReady from 'cable_ready'
 
 export default class extends ApplicationController {
   connect() {
-    console.log('hi')
-    this.subscription = createConsumer().subscriptions.create(
+    this.cosumer = createConsumer()
+    this.subscription = this.cosumer.subscriptions.create(
       {
         channel: "AppearanceChannel",
         id: this.data.get("id"),
@@ -23,13 +23,15 @@ export default class extends ApplicationController {
     console.log('Appearance controller conected')
   }
 
-  _disconnected() {}
+  _disconnected() {
+    console.log('disconnected')
+  }
 
   _received(data) {
     if (data.cableReady) CableReady.perform(data.operations)
   }
 
   disconnect() {
-    this.subscription.remove()
+    this.cosumer.disconnect()
   }
 }

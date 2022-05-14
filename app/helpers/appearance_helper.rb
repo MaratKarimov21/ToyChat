@@ -5,7 +5,7 @@ module AppearanceHelper
     REDIS.sadd('online', id)
   end
 
-  def user_disappear
+  def user_disappear(id)
     REDIS.srem('online', id)
   end
 

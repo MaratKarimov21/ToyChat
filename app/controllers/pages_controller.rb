@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   def home
     session[:current_user_id] = current_user.id
     @current_page = 'Home'
+    @chats = current_user.chats
   end
 
   def clicker
