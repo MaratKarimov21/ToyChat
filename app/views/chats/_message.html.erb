@@ -1,4 +1,4 @@
-<% is_opponent = message.user != current_user %>
+<% is_opponent = message.user != user %>
 <li class="clearfix">
     <div class="message-data <%= is_opponent ? 'text-right' : '' %>">
         <span class="message-data-time"><%= message.created_at.strftime('%m/%d/%y %I:%M%p') %></span>
