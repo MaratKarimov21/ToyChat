@@ -19,13 +19,14 @@
             </div>
         </div>
     </div>
-    <div class="chat-history">
-        <ul class="m-b-0">
-          <%puts chat %>
+    <div class="chat-history" style='height: 50vh; overflow: scroll'>
+      <ul class="m-b-0" data-controller='scroll'>
+        <%= turbo_frame_tag 'messages' do %>
           <% chat.messages.each do |message| %>
             <%= render 'chats/message', message: message, user: user %>
           <% end %>
-        </ul>
+        <% end %>
+      </ul>
     </div>
     <div class="chat-message clearfix">
         <div class="input-group mb-0">
