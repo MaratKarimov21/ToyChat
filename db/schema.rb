@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_11_100452) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_20_114806) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +32,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_100452) do
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id", "friend_id"], name: "index_friendships_on_user_id_and_friend_id", unique: true
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.bigint "playerO_id", null: false
+    t.bigint "playerX_id", null: false
+    t.string "state", default: ["", "", "", "", "", "", "", "", ""], array: true
+    t.bigint "winner_id"
+    t.integer "turn_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playerO_id"], name: "index_games_on_playerO_id"
+    t.index ["playerX_id"], name: "index_games_on_playerX_id"
+    t.index ["winner_id"], name: "index_games_on_winner_id"
   end
 
   create_table "invitations", force: :cascade do |t|
@@ -68,6 +81,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_11_100452) do
   add_foreign_key "chats", "users"
   add_foreign_key "chats", "users", column: "creator_id"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "games", "users", column: "playerO_id"
+  add_foreign_key "games", "users", column: "playerX_id"
+  add_foreign_key "games", "users", column: "winner_id"
   add_foreign_key "messages", "chats"
   add_foreign_key "messages", "users"
 end

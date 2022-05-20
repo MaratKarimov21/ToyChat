@@ -14,6 +14,9 @@ class User < ApplicationRecord
   has_many :created_chats, class_name: 'Chat', foreign_key: 'creator_id', inverse_of: :creator
   has_many :involved_chats, class_name: 'Chat', foreign_key: 'user_id', inverse_of: :user
 
+  has_many :x_games, class_name: 'Game', foreign_key: 'playerX_id', inverse_of: :playerX
+  has_many :o_games, class_name: 'Game', foreign_key: 'playerO_id', inverse_of: :playerO
+
   validates :username, uniqueness: true
 
   def self.from_omniauth(auth)
@@ -29,6 +32,10 @@ class User < ApplicationRecord
 
   def chats
     created_chats + involved_chats
+  end
+
+  def pending_games
+    x_games + o_games
   end
 
   def chat_with(friend)

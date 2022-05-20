@@ -3,10 +3,10 @@
       Pending Games
     </div>
     <ul class="list-group list-group-flush">
-      <% user.friends.each do |friend| %>
+      <% user.pending_games.each do |game| %>
         <li class="list-group-item">
-          <%= friend.username %>
-          <button type="button" class="btn btn-outline-primary float-end">Play</button>
+          <%= game.opponent_of(user).username %>
+          <%= link_to 'Open', game, class: 'btn btn-outline-primary float-end' %>
         </li>
       <% end %>
     </ul>

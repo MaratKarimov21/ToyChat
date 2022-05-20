@@ -14,7 +14,7 @@
   </head>
 
   <body style='margin-top: 0'>
-    <% if user_signed_in? %>
+    <% if user_signed_in? && !@render_widgets %>
       <%= render 'layouts/top_menu' %>
       <%= render 'layouts/appearance' %>
     <% end %>

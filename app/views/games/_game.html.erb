@@ -1,0 +1,16 @@
+<div class="title">
+    <h1>Tic Tac Toe</h1>
+</div>
+<div class="display">
+    <%= game.turn_status || 'Status' %>
+    <%# Player <span class="display-player playerX">X</span>'s turn %>
+</div>
+<div class="toe-container" data-controller='game' >
+    <% game.state.each_with_index do |tile, i| %>
+      <div id='<%= i %>'  class="tile player<%= tile %>" data-action="click->game#turn"><%= tile %></div>
+    <% end %>
+</div>
+<div class="display announcer hide"></div>
+<div class="controls">
+    <button id="reset">Reset</button>
+</div>
