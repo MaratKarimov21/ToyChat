@@ -1,4 +1,4 @@
-<%= turbo_stream_from "chat_#{chat.id}" %>
+<%= turbo_stream_from "chat_#{chat.id}_#{user.id}" %>
 <div class="chat">
     <div class="chat-header clearfix">
         <div class="row">
@@ -21,19 +21,14 @@
     </div>
     <div class="chat-history" style='height: 50vh; overflow: scroll'>
       <ul class="m-b-0" data-controller='scroll'>
-        <%= turbo_frame_tag 'messages' do %>
-          <% chat.messages.each do |message| %>
-            <%= render 'chats/message', message: message, user: user %>
-          <% end %>
+        <% chat.messages.each do |message| %>
+          <%= render 'chats/message', message: message, user: user %>
         <% end %>
       </ul>
     </div>
     <div class="chat-message clearfix">
-        <div class="input-group mb-0">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fa fa-send"></i></span>
-            </div>
-            <input type="text" class="form-control" placeholder="Enter text here...">
-        </div>
+      <%= turbo_frame_tag 'message_form' do %>
+        <%= render 'messages/form', message: Message.new, chat: chat %>
+      <% end %>
     </div>
 </div>

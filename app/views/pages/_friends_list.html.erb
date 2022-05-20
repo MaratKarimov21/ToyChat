@@ -1,0 +1,13 @@
+<div class="card" style="width: 18rem;">
+    <div class="card-header">
+      Your Friends
+    </div>
+    <ul class="list-group list-group-flush">
+      <% user.friends.each do |friend| %>
+        <li class="list-group-item">
+          <%= friend.username %>
+          <button type="button" class="btn btn-outline-primary float-end">Create Game</button>
+        </li>
+      <% end %>
+    </ul>
+  </div>

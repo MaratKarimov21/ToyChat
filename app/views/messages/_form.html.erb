@@ -1,0 +1,8 @@
+<%= form_with model: message, local: true, url: "/chats/#{chat.id}/messages/", class: 'input-group mb-0' do |f| %>
+  <div class="input-group-prepend">
+    <%= f.button(:submit, class: "input-group-text", data: { turbo_frame: "message_form" }) do %>
+      <i class="fa fa-send"></i>
+    <% end %>
+  </div>
+  <%= f.text_field :content, class:"form-control",  placeholder: "Enter text here..." %>
+<% end %>

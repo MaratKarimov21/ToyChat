@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :chats, only: %i[index show]
+  resources :chats, only: %i[index show] do
+    resources :messages, only: %i[new create]
+  end
+
   root 'pages#home'
   get 'clicker', to: 'pages#clicker'
   devise_for :users
