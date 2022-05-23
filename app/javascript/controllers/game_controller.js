@@ -1,12 +1,21 @@
 import ApplicationController from './application_controller.js'
+import { createConsumer } from "@rails/actioncable"
+import CableReady from 'cable_ready'
 
 export default class extends ApplicationController {
-  turn(id) {
-    this.stimulate('Game#make_turn', id.target.id)
+  start() {
+    this.stimulate('Game#start')
+  }
+
+  make_turn() {
+    //cell.target.stimulate('Game#make_turn', cell.target.id)
+    console.log(this)
+    this.stimulate('Game#make_turn', this.element.id)
   }
 
   makeTurnError(e) {
     this.animation(e.id)
+
   }
 
   animation(id) {
@@ -17,4 +26,6 @@ export default class extends ApplicationController {
       x.style.backgroundColor = "#12181B"
     }, 251)
   }
+
+
 }

@@ -39,7 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_20_114806) do
     t.bigint "playerX_id", null: false
     t.string "state", default: ["", "", "", "", "", "", "", "", ""], array: true
     t.bigint "winner_id"
-    t.integer "turn_status"
+    t.string "turn_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["playerO_id"], name: "index_games_on_playerO_id"

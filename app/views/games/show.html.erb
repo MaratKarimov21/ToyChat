@@ -2,7 +2,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
 
 <main class="background">
-  <%= render 'game', game: @game %>
+  <div class="title">
+      <h1>Tic Tac Toe</h1>
+  </div>
+  <div class="display">
+      Your sing is <span class="display-player player<%= @game.sign_of(current_user) %>"><%= @game.sign_of(current_user) %></span>
+  </div>
+  <%= render 'game', game: @game, user: current_user %>
 </main>
 
 <style>

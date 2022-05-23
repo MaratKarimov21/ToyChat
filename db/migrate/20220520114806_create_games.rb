@@ -5,7 +5,7 @@ class CreateGames < ActiveRecord::Migration[7.0]
       t.references :playerX, null: false, foreign_key: { to_table: :users }
       t.string :state, array: true, default: ['', '', '', '', '', '', '', '', '']
       t.references :winner, null: true, foreign_key: { to_table: :users }
-      t.integer :turn_status
+      t.string :turn_status
 
       t.timestamps
     end
