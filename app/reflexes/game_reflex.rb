@@ -5,10 +5,6 @@ class GameReflex < ApplicationReflex
     game = Game.find(session[:current_game_id])
     user = User.find(session[:current_user_id])
 
-    puts game.turn_status
-    puts '==============='
-
-
     if game.state[cell_id.to_i] == '' && game.turn_status == game.sign_of(user)
       new_state = game.state
       new_state[cell_id.to_i] = game.sign_of(user)
